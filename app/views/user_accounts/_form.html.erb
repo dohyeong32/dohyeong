@@ -1,0 +1,37 @@
+<%= form_with(model: user_account, local: true) do |form| %>
+  <% if user_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_account.errors.count, "error") %> prohibited this user_account from being saved:</h2>
+
+      <ul>
+      <% user_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bank_name %>
+    <%= form.text_field :bank_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acount_number %>
+    <%= form.text_field :acount_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cash %>
+    <%= form.number_field :cash %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

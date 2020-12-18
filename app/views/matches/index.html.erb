@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>경기</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>경기종목</th>
+      <th>경기명</th>
+      <th>가격(USD)</th>
+      <th>League</th>
+		<th>시청자수</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.event %></td>
+        <td><%= match.name %></td>
+        <td><%= match.account %></td>
+        <td><%= match.league %></td>
+		<td><%= Board.where(match_id: match.id).size %></td>
+		<td><%= button_to "경기시청", boards_path(board: {user_id: current_user.id, match_id: match.id} ) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Match', new_match_path %>
+<%= link_to '내 시청목록', boards_path %>
+<%= link_to '연동계좌', user_accounts_path %>

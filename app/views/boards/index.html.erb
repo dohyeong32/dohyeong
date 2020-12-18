@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>MY시청목록</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Match</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= board.user.email %></td>
+        <td><%= board.match.name %></td>
+        <td><%= link_to 'Show', board %></td>
+        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to '경기표', matches_path %>
+<%= link_to '연동계좌', user_accounts_path %>

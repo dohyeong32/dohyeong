@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>유저ID:</strong>
+  <%= @board.user.email %>
+</p>
+
+<p>
+  <strong>경기:</strong>
+  <%= @board.match.name %>
+</p>
+
+<p>
+  <strong>가격:</strong>
+  <%= @board.match.account %> USD
+</p>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>
